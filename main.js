@@ -43,9 +43,15 @@ loader.load(
 );
 
 function animate() {
-    if (chaise) {
-        chaise.rotation.y = scrollY * 0.002 - 0.5;
+    if (!chaise) return;
+
+    if (scrollY < window.innerHeight) {
+        camera.position.z = Math.max(2, 3 - scrollY * 0.002);
+        camera.position.y = Math.max(0, 0.4 - scrollY * 0.0005);
+        camera.rotation.y = Math.max(0, 0.2 - scrollY * 0.0005);
     }
+
+    chaise.rotation.y = scrollY * 0.002 - 0.5;
 
     renderer.render(scene, camera);
 }
