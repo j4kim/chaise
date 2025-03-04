@@ -50,10 +50,24 @@ window.addEventListener("scroll", () => {
     scrollY = window.scrollY;
 });
 
+const states = {
+    initial: {
+        cameraPosition: [0, 0.4, 3],
+        cameraRotation: [0, 0.2, 0],
+        chaiseRotation: [0, -0.5, 0],
+    },
+    full: {
+        cameraPosition: [0, 0.5, 2],
+        cameraRotation: [-0.2, 0, 0],
+        chaiseRotation: [0, 0, 0],
+    },
+};
+
 document.querySelectorAll("button").forEach((b) => {
     b.addEventListener("click", (e) => {
-        camera.position.set(...JSON.parse(b.dataset.camPosition));
-        camera.rotation.set(...JSON.parse(b.dataset.camRotation));
-        chaise.rotation.set(...JSON.parse(b.dataset.chaiseRotation));
+        const state = states[b.value];
+        camera.position.set(...state.cameraPosition);
+        camera.rotation.set(...state.cameraRotation);
+        chaise.rotation.set(...state.chaiseRotation);
     });
 });
