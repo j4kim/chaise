@@ -43,19 +43,17 @@ loader.load(
 );
 
 function animate() {
-    if (!chaise) return;
-
-    if (scrollY < window.innerHeight) {
-        camera.position.z = Math.max(2, 3 - scrollY * 0.002);
-        camera.position.y = Math.max(0, 0.4 - scrollY * 0.0005);
-        camera.rotation.y = Math.max(0, 0.2 - scrollY * 0.0005);
-    }
-
-    chaise.rotation.y = scrollY * 0.002 - 0.5;
-
     renderer.render(scene, camera);
 }
 
 window.addEventListener("scroll", () => {
     scrollY = window.scrollY;
+});
+
+document.querySelectorAll("button").forEach((b) => {
+    b.addEventListener("click", (e) => {
+        camera.position.set(...JSON.parse(b.dataset.camPosition));
+        camera.rotation.set(...JSON.parse(b.dataset.camRotation));
+        chaise.rotation.set(...JSON.parse(b.dataset.chaiseRotation));
+    });
 });
