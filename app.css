@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+    font-family: "Space Mono", monospace;
+}
+
+body {
+    margin: 0;
+}
+
+div.content {
+    position: relative;
+    z-index: 1;
+    width: 50rem;
+    margin: 0 auto;
+    height: 4000px;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+}
+
+h1 {
+    font-size: 4em;
+}

@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import "./app.css";
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xff0000);
@@ -26,6 +27,7 @@ camera.rotation.x = -0.15;
 const loader = new GLTFLoader();
 
 let chaise;
+let scrollY = 0;
 
 loader.load(
     "chaise.glb",
@@ -41,8 +43,12 @@ loader.load(
 
 function animate() {
     if (chaise) {
-        chaise.rotation.y += 0.01;
+        chaise.rotation.y = scrollY * 0.002 - 0.5;
     }
 
     renderer.render(scene, camera);
 }
+
+window.addEventListener("scroll", () => {
+    scrollY = window.scrollY;
+});
