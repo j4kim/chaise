@@ -16,13 +16,14 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
-const light = new THREE.DirectionalLight(0xff5555, 3);
+const light = new THREE.DirectionalLight(0xff5555, 6);
 light.position.set(2, 2, 2);
 scene.add(light);
 
-camera.position.z = 2;
-camera.position.y = 0.3;
-camera.rotation.x = -0.15;
+camera.position.z = 3;
+camera.position.y = 0.4;
+camera.rotation.x = 0;
+camera.rotation.y = 0.2;
 
 const loader = new GLTFLoader();
 
