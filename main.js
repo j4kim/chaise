@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import "./app.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xff0000);
@@ -76,4 +80,29 @@ document.querySelectorAll("button").forEach((b) => {
     b.addEventListener("click", (e) => {
         setState(states[b.value]);
     });
+});
+
+function lerp(start, end, t) {
+    return start + (end - start) * t;
+}
+
+function lerpArray(start, end, t) {
+    return start.map((n, i) => lerp(n, end[i], t));
+}
+
+function lerpState(start, end, t) {
+    setState({
+        cameraPosition: lerpArray(start.cameraPosition, end.cameraPosition, t),
+        cameraRotation: lerpArray(start.cameraRotation, end.cameraRotation, t),
+        chaiseRotation: lerpArray(start.chaiseRotation, end.chaiseRotation, t),
+    });
+}
+
+ScrollTrigger.create({
+    trigger: "#s1",
+    start: "top top",
+    onUpdate: (self) => {
+        if (!chaise) return;
+        lerpState(states.initial, states.full, self.progress);
+    },
 });
