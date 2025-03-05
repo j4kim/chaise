@@ -11,9 +11,6 @@ body {
 div.content {
     position: relative;
     z-index: 1;
-    max-width: 50rem;
-    margin: 0 auto;
-    height: 4000px;
 }
 
 canvas {
@@ -29,4 +26,14 @@ h1 {
     font-family: sans-serif;
     font-size: 3em;
     margin-top: 3em;
+}
+
+.screen {
+    height: 100dvh;
+    border-top: 1px solid white;
+}
+
+.screen .container {
+    max-width: 50rem;
+    margin: 0 auto;
 }
