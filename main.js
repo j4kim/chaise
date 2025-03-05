@@ -30,11 +30,27 @@ const loader = new GLTFLoader();
 let chaise;
 let scrollY = 0;
 
+const states = {
+    initial: {
+        cameraPosition: [0, 0.4, 3],
+        cameraRotation: [0, 0.2, 0],
+        chaiseRotation: [0, -0.5, 0],
+    },
+    full: {
+        cameraPosition: [0, 0.5, 2],
+        cameraRotation: [-0.2, 0, 0],
+        chaiseRotation: [0, -2 * Math.PI, 0],
+    },
+};
+
+const initialState = states.initial;
+
 loader.load(
     "chaise.glb",
     function (gltf) {
         chaise = gltf.scene;
         scene.add(chaise);
+        setState(initialState);
     },
     undefined,
     function (error) {
@@ -49,19 +65,6 @@ function animate() {
 window.addEventListener("scroll", () => {
     scrollY = window.scrollY;
 });
-
-const states = {
-    initial: {
-        cameraPosition: [0, 0.4, 3],
-        cameraRotation: [0, 0.2, 0],
-        chaiseRotation: [0, -0.5, 0],
-    },
-    full: {
-        cameraPosition: [0, 0.5, 2],
-        cameraRotation: [-0.2, 0, 0],
-        chaiseRotation: [0, -2 * Math.PI, 0],
-    },
-};
 
 function setState(state) {
     camera.position.set(...state.cameraPosition);
