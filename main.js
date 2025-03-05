@@ -59,15 +59,18 @@ const states = {
     full: {
         cameraPosition: [0, 0.5, 2],
         cameraRotation: [-0.2, 0, 0],
-        chaiseRotation: [0, 0, 0],
+        chaiseRotation: [0, -2 * Math.PI, 0],
     },
 };
 
+function setState(state) {
+    camera.position.set(...state.cameraPosition);
+    camera.rotation.set(...state.cameraRotation);
+    chaise.rotation.set(...state.chaiseRotation);
+}
+
 document.querySelectorAll("button").forEach((b) => {
     b.addEventListener("click", (e) => {
-        const state = states[b.value];
-        camera.position.set(...state.cameraPosition);
-        camera.rotation.set(...state.cameraRotation);
-        chaise.rotation.set(...state.chaiseRotation);
+        setState(states[b.value]);
     });
 });
