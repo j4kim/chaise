@@ -70,6 +70,32 @@ h1 {
     width: 50%;
 }
 
+button {
+    border: none;
+    margin: 0;
+    padding: 0.4em 0.8em;
+    width: auto;
+    background: white;
+    color: black;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+}
+button:hover {
+    background: black;
+    color: red;
+}
+
+#s4 .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#s4 .text h1 {
+    padding-top: 0;
+}
+
 .text h2,
 .text p {
     margin-bottom: 1rem;

@@ -83,7 +83,7 @@ function setState(state) {
     chaise.rotation.set(...state.chaiseRotation);
 }
 
-document.querySelectorAll("button").forEach((b) => {
+document.querySelectorAll(".buttons button").forEach((b) => {
     b.addEventListener("click", (e) => {
         setState(states[b.value]);
     });
@@ -129,5 +129,7 @@ ScrollTrigger.create({
     onUpdate: (self) => {
         if (!chaise) return;
         lerpState(states.back, states.through, self.progress);
+        const textel = document.querySelector("#s4 .text");
+        textel.style.opacity = (self.progress - 0.5) * 3;
     },
 });
