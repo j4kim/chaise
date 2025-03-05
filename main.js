@@ -47,7 +47,7 @@ function mapY(max, min = 0) {
 
 const states = {
     initial: {
-        cameraPosition: [0, 0.4, 3],
+        cameraPosition: [0, mapY(0.4, 0.2), 3],
         cameraRotation: [0, mapY(0.35, 0.05), 0],
         chaiseRotation: [0, -0.5, 0],
     },
