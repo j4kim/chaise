@@ -22,6 +22,7 @@ const camera = new THREE.PerspectiveCamera(45, ratio, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
+renderer.setPixelRatio(scale);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
