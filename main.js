@@ -36,8 +36,8 @@ const states = {
     },
     full: {
         cameraPosition: [0, 0.5, 2],
-        cameraRotation: [-0.2, 0, 0],
-        chaiseRotation: [0, -2 * Math.PI, 0],
+        cameraRotation: [-0.2, -0.2, 0],
+        chaiseRotation: [0, -1.8 * Math.PI, 0],
     },
 };
 
