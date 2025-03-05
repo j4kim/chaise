@@ -39,11 +39,11 @@ h1 {
     height: 100%;
 }
 
-.buttons {
+.toolbar {
     display: none;
 }
 
-.development .buttons {
+.development .toolbar {
     display: block;
     position: fixed;
     top: 0;

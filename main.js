@@ -6,15 +6,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const scale = window.devicePixelRatio;
 const w = window.innerWidth;
-const ratio = w / window.innerHeight;
+const h = window.innerHeight;
+const ratio = w / h;
+
+document.querySelector(".toolbar .w").innerText = w;
+document.querySelector(".toolbar .h").innerText = h;
+document.querySelector(".toolbar .scale").innerText = scale;
+document.querySelector(".toolbar .ratio").innerText = ratio.toFixed(2);
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xff0000);
 const camera = new THREE.PerspectiveCamera(45, ratio, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(w, h);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
@@ -83,7 +90,7 @@ function setState(state) {
     chaise.rotation.set(...state.chaiseRotation);
 }
 
-document.querySelectorAll(".buttons button").forEach((b) => {
+document.querySelectorAll(".toolbar button").forEach((b) => {
     b.addEventListener("click", (e) => {
         setState(states[b.value]);
     });
