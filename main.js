@@ -6,14 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const w = window.innerWidth;
+const ratio = w / window.innerHeight;
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xff0000);
-const camera = new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
+const camera = new THREE.PerspectiveCamera(45, ratio, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -28,15 +26,24 @@ const loader = new GLTFLoader();
 
 let chaise;
 
+const wmax = 1000;
+const wmin = 400;
+
+function mapY(max, min = 0) {
+    if (w <= wmin) return min;
+    if (w > wmax) return max;
+    return ((w - wmin) / (wmax - wmin)) * max;
+}
+
 const states = {
     initial: {
         cameraPosition: [0, 0.4, 3],
-        cameraRotation: [0, 0.2, 0],
+        cameraRotation: [0, mapY(0.35, 0.05), 0],
         chaiseRotation: [0, -0.5, 0],
     },
     full: {
         cameraPosition: [0, 0.5, 2],
-        cameraRotation: [-0.2, -0.2, 0],
+        cameraRotation: [-0.2, mapY(-0.3, -0.2), 0],
         chaiseRotation: [0, -1.8 * Math.PI, 0],
     },
 };
