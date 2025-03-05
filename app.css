@@ -1,19 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-:root {
-    font-family: "Space Mono", monospace;
+* {
+    margin: 0;
 }
 
-body {
-    margin: 0;
+:root {
+    font-family: "Space Mono", monospace;
 }
 
 div.content {
     position: relative;
     z-index: 1;
-    max-width: 50rem;
-    margin: 0 auto;
-    height: 4000px;
 }
 
 canvas {
@@ -23,10 +20,83 @@ canvas {
 
 h1 {
     font-size: 4em;
+    padding-top: 1em;
 }
 
 .arrow {
     font-family: sans-serif;
     font-size: 3em;
     margin-top: 3em;
+}
+
+.screen {
+    height: 100dvh;
+}
+
+.screen .container {
+    max-width: 64rem;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.buttons {
+    display: none;
+}
+
+.development .buttons {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.development .screen {
+    border-top: 1px dashed white;
+}
+
+.development .container {
+    border: 1px black;
+    border-left-style: dashed;
+    border-right-style: dashed;
+}
+
+#s2 .container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+#s2 .text {
+    width: 50%;
+}
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0.4em 0.8em;
+    width: auto;
+    background: white;
+    color: black;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+}
+button:hover {
+    background: black;
+    color: red;
+}
+
+#s4 .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#s4 .text h1 {
+    padding-top: 0;
+}
+
+.text h2,
+.text p {
+    margin-bottom: 1rem;
 }

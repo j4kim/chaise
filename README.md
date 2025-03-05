@@ -11,3 +11,9 @@ chaise
 ```
 npx vite
 ```
+
+chaise
+
+```
+npx vite build --base=./
+```
