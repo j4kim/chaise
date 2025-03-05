@@ -46,6 +46,16 @@ const states = {
         cameraRotation: [-0.2, mapY(-0.3, -0.2), 0],
         chaiseRotation: [0, -1.8 * Math.PI, 0],
     },
+    back: {
+        cameraPosition: [0, 0.2, 1],
+        cameraRotation: [0, 0, 0],
+        chaiseRotation: [0, -1 * Math.PI, 0],
+    },
+    through: {
+        cameraPosition: [0, 0.2, -0.5],
+        cameraRotation: [0, 0, 0],
+        chaiseRotation: [0, -1 * Math.PI, 0],
+    },
 };
 
 const initialState = states.initial;
@@ -101,5 +111,23 @@ ScrollTrigger.create({
     onUpdate: (self) => {
         if (!chaise) return;
         lerpState(states.initial, states.full, self.progress);
+    },
+});
+
+ScrollTrigger.create({
+    trigger: "#s2 .text",
+    start: "top center",
+    onUpdate: (self) => {
+        if (!chaise) return;
+        lerpState(states.full, states.back, self.progress);
+    },
+});
+
+ScrollTrigger.create({
+    trigger: "#s3",
+    start: "top top",
+    onUpdate: (self) => {
+        if (!chaise) return;
+        lerpState(states.back, states.through, self.progress);
     },
 });
