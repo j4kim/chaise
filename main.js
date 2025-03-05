@@ -8,11 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const scale = window.devicePixelRatio;
 const w = window.innerWidth;
-const h = window.innerHeight;
-const ratio = w / h;
+const iH = window.innerHeight;
+const oH = window.outerHeight;
+const ratio = w / oH;
 
 document.querySelector(".toolbar .w").innerText = w;
-document.querySelector(".toolbar .h").innerText = h;
+document.querySelector(".toolbar .ih").innerText = iH;
+document.querySelector(".toolbar .oh").innerText = oH;
 document.querySelector(".toolbar .scale").innerText = scale;
 document.querySelector(".toolbar .ratio").innerText = ratio.toFixed(2);
 
@@ -21,7 +23,7 @@ scene.background = new THREE.Color(0xff0000);
 const camera = new THREE.PerspectiveCamera(45, ratio, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(w, h);
+renderer.setSize(w, oH);
 renderer.setPixelRatio(scale);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
