@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-:root {
-    font-family: "Space Mono", monospace;
+* {
+    margin: 0;
 }
 
-body {
-    margin: 0;
+:root {
+    font-family: "Space Mono", monospace;
 }
 
 div.content {
@@ -20,6 +20,7 @@ canvas {
 
 h1 {
     font-size: 4em;
+    padding-top: 1em;
 }
 
 .arrow {
@@ -30,10 +31,30 @@ h1 {
 
 .screen {
     height: 100dvh;
-    border-top: 1px solid white;
 }
 
 .screen .container {
     max-width: 50rem;
     margin: 0 auto;
+    height: 100%;
+}
+
+.production .buttons {
+    display: none;
+}
+
+.development .buttons {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.development .screen {
+    border-top: 1px dashed white;
+}
+
+.development .container {
+    border: 1px black;
+    border-left-style: dashed;
+    border-right-style: dashed;
 }
