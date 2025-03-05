@@ -116,7 +116,7 @@ ScrollTrigger.create({
 
 ScrollTrigger.create({
     trigger: "#s2 .text",
-    start: "top center",
+    start: "top 20%",
     onUpdate: (self) => {
         if (!chaise) return;
         lerpState(states.full, states.back, self.progress);
