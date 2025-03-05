@@ -24,15 +24,9 @@ const light = new THREE.DirectionalLight(0xff5555, 6);
 light.position.set(2, 2, 2);
 scene.add(light);
 
-camera.position.z = 3;
-camera.position.y = 0.4;
-camera.rotation.x = 0;
-camera.rotation.y = 0.2;
-
 const loader = new GLTFLoader();
 
 let chaise;
-let scrollY = 0;
 
 const states = {
     initial: {
@@ -65,10 +59,6 @@ loader.load(
 function animate() {
     renderer.render(scene, camera);
 }
-
-window.addEventListener("scroll", () => {
-    scrollY = window.scrollY;
-});
 
 function setState(state) {
     camera.position.set(...state.cameraPosition);
